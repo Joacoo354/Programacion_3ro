@@ -1,0 +1,50 @@
+p {
+    color: blue;
+}
+
+.importante {
+    color: red;
+    font-style: bold;
+}
+
+#titulo {
+    text-align: center;
+    color: green;
+}
+
+h1, h2, nav {
+    background-color: grey;
+}
+
+div p {
+    border: 1px;
+    border-color: black;
+}
+
+section > p {
+    font-size: 18px;
+}
+
+h1 + p {
+    color: brown;
+}
+
+h1 ~ p {
+    margin-top: 20px;
+}
+
+input[required] {
+    border-color: red;
+}
+
+a:hover {
+    color: blue;
+}
+
+input:focus {
+    background-color: aqua;
+}
+
+li:nth-child(2) {
+    background-color: yellow;
+}
