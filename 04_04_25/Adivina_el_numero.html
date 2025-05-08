@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var NumeroAleatorio= Math.floor(Math.random()*100)+1
+        var vidas = 5;
+        var numero = prompt("Ingrese un numero entre 1 y 100: ");
+        if (numero>0 && numero<=100){
+        while (vidas>0){
+            if(numero==NumeroAleatorio){
+            alert("Ganaste");
+            break;
+            }else if(numero > NumeroAleatorio){
+                alert("El numero secreto es menor")
+                var numero = prompt("Ingrese un numero entre 1 y 100: ");
+                vidas --;
+            }else if (numero < NumeroAleatorio) {
+                alert("Ingrese un numero mayor");
+                var numero = prompt("Ingrese un numero entre 1 y 100: ");
+                vidas --;
+            }else {
+                alert("Ingrese un valor valido");
+        }
+        }
+    }
+    </script>
+</body>
+</html>

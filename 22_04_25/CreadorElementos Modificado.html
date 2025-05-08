@@ -1,0 +1,128 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalina Erro</title>
+</head>
+
+
+<style>
+.colorArriba {
+            color: rgb(255, 199, 227);
+        }
+
+
+</style>
+
+<body bgcolor="#fff5ca">
+    <center>
+    <div id="demo"> <b> ♡ ¡Agregá todos los parrafos que desees! ♡  </b> </div>
+    <form>
+        <hr>
+<br>
+        <input type="text" id="reemplazaAgregar" placeholder="Agregar un parrafo">
+        <br>
+        <input type="number" id="numeroParrafo" placeholder="Número de párrafo a modificar">
+        <br>
+        <input type="text" id="reemplazaModificar" placeholder="Texto nuevo que vas a modificar">
+
+    </form>
+    <hr>
+
+    <button id="botonAgregar" onclick="nuevoParrafo()">Agregar</button>
+    <button onclick="eliminar()">Quitar</button>
+    <button id="botonModificar" onclick="reemplazar()">Modificar</button>
+    <hr>
+</center>
+    <script>
+
+       //variable global contador que va a decir que numero de parrafo es, empieza en 0
+        var cuentaParrafos = 0;
+
+
+    // Boton agregar
+    function nuevoParrafo() {
+ // cambio color del botón agregar a rosado
+ document.getElementById("botonAgregar").style.backgroundColor = "pink";
+
+      var textoIngresado = document.getElementById("reemplazaAgregar").value;
+// si no está vacio, suma un numero al contador 
+      if (textoIngresado !== "") {
+        cuentaParrafos++;
+//crea nuevo parrafo
+        var nuevoParrafo = document.createElement("p");
+//coloca el texto Parrafo + num de parrafo + texto que pusiste en el parrafo
+        var textoConNumero = "Parrafo  " + cuentaParrafos + ": " + textoIngresado;
+        var nodoTexto = document.createTextNode(textoConNumero);
+        nuevoParrafo.appendChild(nodoTexto);
+
+        // cuando pase el mouse por arriba pasa a ser rosado
+        nuevoParrafo.onmouseover = function () {
+                    this.classList.add("colorArriba");
+                };
+                nuevoParrafo.onmouseout = function () {
+                    this.classList.remove("colorArriba");
+                };
+        // se agrega a demo
+        var div = document.getElementById("demo");
+        div.appendChild(nuevoParrafo);
+
+      }
+    }
+    
+    // El boton quitar
+function eliminar() {
+            var padre = document.getElementById("demo");
+            var parrafos = padre.getElementsByTagName("p");
+
+            // si hay al menos un parrafo busca el primero y lo elimina
+            if (parrafos.length > 0) {
+                
+                padre.removeChild(parrafos[0]);
+
+            }
+        }
+
+        
+        // El boton modificar
+function reemplazar() {
+
+// cambio boton de modificar a rosado
+    document.getElementById("botonModificar").style.backgroundColor = "pink";
+
+
+    //leer el numero de parrafos que queres ingresar
+    var numero = parseInt(document.getElementById("numeroParrafo").value);
+    //leer el nuevo texto que queres ingresar
+    var textoNuevo = document.getElementById("reemplazaModificar").value;
+
+    // tener el div donde estan todos los parrafos y tener los parrafos existentes
+    var padre = document.getElementById("demo");
+    var parrafos = padre.getElementsByTagName("p");
+
+
+    // verificar existencia de parrafos y que sean mayor que 0
+     if (parrafos.length > 0 && numero > 0) {
+        //creacion nuevo parrafo con el texto nuevo
+                var nuevoParrafo = document.createElement("p");
+                // modificando el parrafo segun su numero de parrafo
+                var texto = document.createTextNode("Parrafo " + numero + " (modificado): " + textoNuevo);
+                nuevoParrafo.appendChild(texto);
+
+                //cuando pase el mouse por arriba se vuelve rosado los parrafos modificados tambien
+                nuevoParrafo.onmouseover = function () {
+                    this.classList.add("colorArriba");
+                };
+                nuevoParrafo.onmouseout = function () {
+                    this.classList.remove("colorArriba");
+                };
+                // final del reemplazar, reemplazamos el texto anterior por el nuevo
+                padre.replaceChild(nuevoParrafo, parrafos[numero - 1]);
+}
+}
+    </script>
+   
+</body>
+
+</html>

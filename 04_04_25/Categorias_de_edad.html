@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id=""></h1>
+    <script>
+        var edad = prompt("Ingrese su edad: ");
+        if (edad >0 && edad < 13){
+            document.write("Niño");
+        }else if (edad > 12 && edad < 18){
+            document.write("Adolescente");
+        }else if (edad > 17 && edad < 65){
+            document.write("Adulto")
+        }else if (edad > 64 && edad < 131){
+            document.write("Adulto mayor")
+        }else {
+            alert("Ingrese un valor valido");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo">Algún contenido</div>
+    <form>
+
+        <input type="text" id="reemplaza">
+    </form>
+
+    <button onclick="nuevoParrafo()">Agregar</button>
+    <button onclick="eliminar()">Quitar</button>
+    <button onclick="reemplazar()">Modificar</button>
+    <script>
+        
+        function nuevoParrafo() {
+            
+            var p = document.createElement("p");
+            var nodo = document.createTextNode(document.getElementById("reemplaza").value);
+
+            p.appendChild(nodo);
+
+            var div = document.getElementById("demo");
+            div.appendChild(p);
+
+        }
+        function eliminar() {
+            var padre = document.getElementById("demo");
+            var parrafos = padre.getElementsByTagName("p");
+
+            if (parrafos.length > 0) {
+                
+                padre.removeChild(parrafos[0]);
+
+            }
+        }
+        function reemplazar() {
+            var padre = document.getElementById("demo");
+            var Parrafos = padre.getElementsByTagName("p");
+
+            if (Parrafos.length > 0) {
+                var nuevoParrafo = document.createElement("p");
+                var texto = document.createTextNode(document.getElementById("reemplaza").value);
+                nuevoParrafo.appendChild(texto);
+
+                padre.replaceChild(nuevoParrafo, Parrafos[0]);
+            }
+        }
+    </script>
+</body>
+
+</html>
